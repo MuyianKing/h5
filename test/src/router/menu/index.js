@@ -137,6 +137,27 @@ export default [
     },
   },
   {
+    path: '/file',
+    component: () => import('@views/components/File.vue'),
+    meta: {
+      title: '文件',
+    },
+  },
+  {
+    path: '/audio',
+    component: () => import('@views/components/Audio.vue'),
+    meta: {
+      title: '音频',
+    },
+  },
+  {
+    path: '/preview',
+    component: () => import('@views/components/Preview.vue'),
+    meta: {
+      title: '所有文件',
+    },
+  },
+  {
     path: '/:pathMatch(.*)*',
     component: () => import('@views/404.vue'),
   },

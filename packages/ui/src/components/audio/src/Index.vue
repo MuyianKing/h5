@@ -1,6 +1,6 @@
 <script setup>
 import { Icon as VanIcon, Progress as VanProgress } from 'vant'
-import { computed, inject, reactive, watch } from 'vue'
+import { computed, inject, reactive, ref, watch } from 'vue'
 
 const props = defineProps({
   file: {
@@ -17,13 +17,17 @@ const player = reactive({
   status: 'pause',
   cur_timestamp: 0,
   duration: 0,
+  duration_format: '00:00',
   error: '',
+  show_progress: false,
 })
 
 function handleClick() {
   if (!audio) {
     return
   }
+
+  player.show_progress = true
 
   if (player.error) {
     hl.message.error(null, player.error)
@@ -39,6 +43,7 @@ function handleClick() {
   }
 }
 
+const duration = ref('00:00')
 watch(() => props.file, (val) => {
   audio && audio.pause()
 
@@ -46,23 +51,25 @@ watch(() => props.file, (val) => {
     audio = new Audio()
   }
 
+  // 设置音频时长
+  audio.oncanplay = () => {
+    player.duration = audio.duration
+    player.duration_format = dayjs.duration(player.duration, 's').format('HH:mm:ss').replace(/00:/, '')
+  }
+
+  // 更新当前进度
   audio.ontimeupdate = () => {
     player.cur_timestamp = audio.currentTime
+    duration.value = dayjs.duration(player.cur_timestamp, 's').format('HH:mm:ss').replace(/00:/, '')
   }
 
-  audio.onplay = () => {
-    player.duration = audio.duration
-  }
-
-  audio.ondurationchange = (e) => {
-    console.log(e)
-  }
-
+  // 播放结束
   audio.onended = () => {
     player.status = 'pause'
     player.cur_timestamp = 0
   }
 
+  // 播放错误
   audio.onerror = () => {
     player.error = '音频数据不存在，无法播放'
   }
@@ -72,35 +79,36 @@ watch(() => props.file, (val) => {
   immediate: true,
 })
 
-const duration = computed(() => {
-  return dayjs.duration(player.cur_timestamp || player.duration, 's').format('HH:mm:ss').replace(/00:/, '')
-})
-
+// 进度条百分比
 const percent = computed(() => {
   if (!player.duration) {
     return 0
   }
 
-  const _percent = (player.cur_timestamp / player.duration).toFixed(2) * 100
+  const _percent = (player.cur_timestamp / player.duration).toFixed(4) * 100
   return Math.min(_percent, 100)
 })
 </script>
 
 <template>
-  <div class="hl-audio bg-gray-50 p-2 rounded">
-    <div class="flex ">
-      <div class="flex-1 leading-4">
-        <div class="line-clamp-1 break-all">
-          {{ file?.name }}{{ file?.name }}{{ file?.name }}{{ file?.name }}
-        </div>
-        <div class="my-1">
-          {{ duration }}
-        </div>
-      </div>
-      <div class="text-yellow-400 ml-2" @click="handleClick">
-        <van-icon :name="player.status === 'pause' ? 'play-circle-o' : 'stop-circle-o'" size="30" />
-      </div>
+  <div class="hl-audio">
+    <div class="left mr-2" @click="handleClick">
+      <van-icon :name="player.status === 'pause' ? 'play-circle-o' : 'stop-circle-o'" />
     </div>
-    <van-progress :percentage="percent" pivot-text="." color="#facc15" stroke-width="2" />
+    <div class="flex-1 min-w-0 relative">
+      <div class="w-full leading-4">
+        <div class="line-clamp-1 break-all file-name">
+          {{ file?.name }}
+        </div>
+        <div class="mt-1 mb-2 text-gray-400">
+          <template v-if="player.show_progress">
+            <span>{{ duration }}</span>
+            <span class="mx-1">/</span>
+          </template>
+          <span>{{ player.duration_format }}</span>
+        </div>
+      </div>
+      <van-progress v-if="player.show_progress" class="progress-item" :percentage="percent" pivot-text="." stroke-width="3" />
+    </div>
   </div>
 </template>

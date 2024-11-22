@@ -48,7 +48,7 @@ const is_only_video_image = inject('is_only_video_image')
 </script>
 
 <template>
-  <div v-for="(_file, index) in _files" :key="_file.id" class="preview-wrapper nth-item" :class="{ 'ml-0': index % 3 === 0 }">
+  <div v-for="(_file, index) in _files" :key="_file.id" class="preview-wrapper nth-item" :class="{ 'ml-0': nth === 0 || index % nth === 0 }">
     <preview-item v-if="!is_only_video_image" :file="_file" class="py-1" @delete="handleDel(_file)" @re-upload="handleChange(_file)" />
 
     <template v-else>

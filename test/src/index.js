@@ -8,6 +8,7 @@ import * as file from '@hl/utils/es/file'
 import storage from '@hl/utils/es/storage'
 import useIcon from '@utils/icon'
 import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
 import { Lazyload } from 'vant'
 import { createApp } from 'vue'
 import { VuePageStackPlugin } from 'vue-page-stack'
@@ -18,6 +19,7 @@ import '@style/util.scss'
 useIcon()
 
 // 全局属性
+dayjs.extend(duration)
 window.dayjs = dayjs
 window.hl = {
   storage,

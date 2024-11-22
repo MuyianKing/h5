@@ -24,14 +24,6 @@ const components = [
         path: '/icon',
       },
       {
-        label: 'hl-image 图片',
-        path: '/image',
-      },
-      {
-        label: 'hl-video 视频',
-        path: '/video',
-      },
-      {
         label: 'hl-table 表格',
         path: '/table',
       },
@@ -67,6 +59,31 @@ const components = [
       {
         label: 'hl-upload 上传',
         path: '/upload',
+      },
+    ],
+  },
+  {
+    title: '文件组件',
+    children: [
+      {
+        label: 'hl-image 图片',
+        path: '/image',
+      },
+      {
+        label: 'hl-video 视频',
+        path: '/video',
+      },
+      {
+        label: 'hl-audio 音频',
+        path: '/audio',
+      },
+      {
+        label: 'hl-file 文件',
+        path: '/file',
+      },
+      {
+        label: 'hl-preview 所有文件',
+        path: '/preview',
       },
     ],
   },

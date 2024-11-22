@@ -17,7 +17,7 @@ const props = defineProps({
   },
   width: {
     type: String,
-    default: 'auto',
+    default: '100px',
   },
   controls: {
     type: Boolean,
@@ -56,14 +56,14 @@ watch(_files, (val) => {
 </script>
 
 <template>
-  <div class="hl-preview">
+  <div class="hl-preview" :style="{ '--hl-preview-first-file': _image_video.length === 0 ? 'none' : '' }">
     <template v-for="item in _image_video" :key="item.id">
-      <hl-image v-if="item.type === 'image'" :height :width :src="item.path" fit="cover" class="m-1" />
-      <hl-video v-else :src="item.path" :height :width class="m-1" :controls style="min-width: 200px;" />
+      <hl-image v-if="item.type === 'image'" :height :width :src="item.path" fit="cover" />
+      <hl-video v-else :src="item.path" :height :width :controls style="min-width: 200px;" />
     </template>
 
     <template v-for="item in _not_image_video" :key="item.id">
-      <hl-file :file="item" class="m-1 w-full" />
+      <hl-file :file="item" class="w-full" />
     </template>
   </div>
 </template>

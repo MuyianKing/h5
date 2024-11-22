@@ -1,6 +1,6 @@
 <script setup>
 import { AUDIO_SUFFIX, FILE_SUFFIX } from '@hl/utils'
-import { computed, inject, nextTick, onMounted, provide, ref, useSlots } from 'vue'
+import { computed, inject, nextTick, onMounted, provide, ref, useSlots, watch } from 'vue'
 
 import PreviewComp from './components/Preview.vue'
 import UploadProgress from './components/Progress.vue'
@@ -248,9 +248,28 @@ const _style = computed(() => {
 })
 
 const upload_ref = ref()
+
+function calNth() {
+  if (!upload_ref.value) {
+    return
+  }
+
+  if (is_only_video_image.value) {
+    const width = upload_ref.value.clientWidth
+    nth.value = Math.floor((width - 5) / 110)
+  } else {
+    nth.value = 0
+  }
+}
+
+watch(is_only_video_image, () => {
+  calNth()
+}, {
+  immediate: true,
+})
+
 onMounted(() => {
-  const width = upload_ref.value.clientWidth
-  nth.value = Math.floor((width - 5) / 110)
+  calNth()
 })
 </script>
 
@@ -259,7 +278,7 @@ onMounted(() => {
     <preview-comp v-if="!slots.preview" :file="files_value" :nth @delete="handleDel" @re-upload="handleReupload" />
 
     <slot v-else name="preview" />
-    <trigger-comp v-if="!readonly" ref="trigger_ref" :config="trigger_config" :class="{ 'ml-0': files_value?.length % nth === 0 }" @select-file="handleSelect">
+    <trigger-comp v-if="!readonly" ref="trigger_ref" :config="trigger_config" :class="{ 'ml-0': nth === 0 || files_value?.length % nth === 0 }" @select-file="handleSelect">
       <template v-if="slots.default" #trigger>
         <slot />
       </template>

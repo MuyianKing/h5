@@ -30,8 +30,8 @@ function handleDownload() {
 </script>
 
 <template>
-  <audio-player v-if="file && getType(file.fileName || file.name) === 'audio'" v-model="wavesurfer_src" :file v-bind="$attrs" />
-  <span v-else v-bind="$attrs" class="hl-file-item" @click="handleDownload">
+  <audio-player v-if="file && getType(file.fileName || file.name) === 'audio'" v-model="wavesurfer_src" class="hl-file" :file v-bind="$attrs" />
+  <span v-else class="hl-file" v-bind="$attrs" @click="handleDownload">
     {{ file?.name }}
   </span>
 </template>

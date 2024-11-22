@@ -1,8 +1,34 @@
 .hl-audio {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  .left {
+    color: var(--van-primary-color);
+    height: fit-content;
+    position: relative;
+    top: -3px;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  .file-name {
+    font-size: 15px;
+    color: #444;
+  }
+
+  .progress-item {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  // 进度条上的点
   .van-progress__pivot {
-    width: 10px;
+    width: 8px;
     min-width: 0;
     padding: 0;
-    height: 10px;
+    height: 8px;
   }
 }

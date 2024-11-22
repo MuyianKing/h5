@@ -1,4 +1,22 @@
 .hl-preview {
   display: flex;
   flex-wrap: wrap;
+
+  & > * {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0;
+  }
+
+  & > .hl-file {
+    border-top: 1px solid rgb(230, 230, 230);
+    padding-top: 10px;
+  }
+
+  & > .hl-file:first-child {
+    border-top: var(--hl-preview-first-file);
+  }
 }

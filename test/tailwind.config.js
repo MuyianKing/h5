@@ -6,7 +6,7 @@ export default {
   content: [
     './public/index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
-    '../../node_modules/@hl/h5/**/*.{vue,jsx,tsx}',
+    '../packages/ui/src/components/**/*.{vue,jsx,tsx,scss}',
   ],
   plugins: [],
 }
