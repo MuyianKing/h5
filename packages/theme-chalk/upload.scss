@@ -1,0 +1,152 @@
+.hl-upload-wrapper {
+  color: #555;
+  width: 100%;
+
+  &.flex-style {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .preview-wrapper {
+    position: relative;
+    border-radius: 5px;
+    margin: var(--hl-preview-margin);
+
+    .loading-item {
+      position: absolute;
+      z-index: 99;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .ml-0 {
+    margin-left: 0 !important;
+  }
+
+  .delete-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 20px;
+    height: 20px;
+    border-radius: 0 0 0 100%;
+
+    .icon-close {
+      position: relative;
+      top: 0;
+      right: -3px;
+    }
+  }
+
+  .preview-wrapper:hover {
+    .delete-wrapper {
+      display: flex;
+    }
+  }
+
+  img {
+    border-radius: 5px;
+  }
+
+  .hl-preview-video {
+    border-radius: 5px;
+  }
+
+  .file-item {
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: 22px !important;
+    }
+
+    .icon-close {
+      display: none;
+      color: gray;
+    }
+
+    .icon-loading {
+      color: var(--color-warning);
+    }
+  }
+
+  .file-item:hover {
+    background-color: rgb(238, 239, 255);
+    color: var(--van-primary-color);
+    cursor: pointer;
+
+    .icon-success {
+      display: none;
+    }
+
+    .icon-close {
+      display: inherit;
+    }
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .trigger-item {
+    width: 100px !important;
+    height: 100px;
+    background-color: #e9eff9;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: var(--hl-preview-margin);
+  }
+
+  .normal-trigger {
+    width: fit-content;
+  }
+
+  .upload-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .upload-icon:hover {
+    color: var(--van-primary-color);
+    text-decoration: underline;
+  }
+}
+
+.hl-progress-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  .progress-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 50%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+  }
+
+  .progress {
+    width: 100%;
+  }
+}

@@ -1,0 +1,7 @@
+.hl-form-item {
+  align-items: baseline;
+
+  .van-field__label {
+    width: var(--label-width);
+  }
+}

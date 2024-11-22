@@ -1,0 +1,64 @@
+{
+  "name": "@hl/ui",
+  "type": "module",
+  "version": "0.7.2",
+  "main": "./index.js",
+  "scripts": {
+    "commit": "git add . && git cz",
+    "lint": "lint-staged",
+    "build": "node ./script/build.js pck=ui",
+    "update-dep": "npm-check-updates & ncu -u & pnpm i"
+  },
+  "dependencies": {
+    "@hl/utils": "0.7.3",
+    "@iconify/vue": "^4.1.2",
+    "@multiavatar/multiavatar": "^1.0.7",
+    "@vant/use": "^1.6.0",
+    "@vueuse/core": "^11.2.0",
+    "dayjs": "^1.11.13",
+    "js-cookie": "^3.0.5",
+    "lodash-es": "^4.17.21",
+    "nanoid": "^5.0.8",
+    "validator": "^13.12.0",
+    "vant": "^4.9.9",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.9.2",
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/eslintrc": "^3.2.0",
+    "@vant/auto-import-resolver": "^1.2.1",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "@vitejs/plugin-vue-jsx": "^4.1.0",
+    "@vue/compiler-sfc": "^3.5.13",
+    "autoprefixer": "^10.4.20",
+    "cz-git": "^1.11.0",
+    "eslint": "9.15.0",
+    "eslint-plugin-format": "^0.1.2",
+    "fs-extra": "^11.2.0",
+    "lint-staged": "^15.2.10",
+    "postcss": "^8.4.49",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^10.1.1",
+    "sass": "^1.81.0",
+    "tailwindcss": "^3.4.15",
+    "terser": "^5.36.0",
+    "unplugin-auto-import": "^0.18.5",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "resolutions": {
+    "bin-wrapper": "npm:bin-wrapper-china"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "eslint --fix"
+    ]
+  }
+}

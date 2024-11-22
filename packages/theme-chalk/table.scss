@@ -1,0 +1,128 @@
+.hl-table {
+  max-height: 100%;
+  overflow-x: auto;
+  height: 100%;
+
+  .hidden-columns {
+    visibility: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .body-wrapper {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: fit-content;
+    min-width: 100%;
+    position: relative;
+    scrollbar-width: none;
+    max-height: calc(100% - 41px);
+  }
+
+  .body-wrapper::-webkit-scrollbar {
+    width: 0px;
+    height: 7px;
+  }
+
+  .body-wrapper::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 20px;
+  }
+
+  .body-wrapper:hover::-webkit-scrollbar-thumb {
+    background: rgba(185, 186, 189, 0.6);
+  }
+
+  .nowrap {
+    .hl-table-td {
+      white-space: nowrap;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    thead,
+    tr {
+      width: 100%;
+    }
+
+    .hl-table-td {
+      box-sizing: border-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      line-height: 23px;
+      padding: 8px;
+      font-size: 14px;
+      text-align: left;
+      position: relative;
+    }
+
+    .hl-table-th {
+      white-space: break-spaces;
+    }
+
+    tbody .hl-table-td {
+      line-height: 23px;
+      word-break: break-all;
+    }
+
+    th {
+      color: #909399;
+    }
+
+    td {
+      color: #606266;
+    }
+
+    .extend-td {
+      padding: 0;
+    }
+
+    .hl-table-no-data {
+      text-align: center;
+      line-height: 60px;
+      color: #909399;
+      border-bottom: 1px solid #ebeef5;
+      font-size: 14px;
+      height: 60px;
+      line-height: 60px !important;
+    }
+  }
+}
+
+.hl-table-border {
+  .hl-table-header {
+    border-top: var(--hl-table-border-width) solid var(--hl-table-border-color);
+  }
+
+  table {
+    border-left: var(--hl-table-border-width) solid var(--hl-table-border-color);
+
+    tbody td,
+    thead th {
+      border-bottom: var(--hl-table-border-width) solid var(--hl-table-border-color);
+      border-right: var(--hl-table-border-width) solid var(--hl-table-border-color);
+    }
+  }
+
+  .hl-table-no-data {
+    border-bottom: var(--hl-table-border-width) solid var(--hl-table-border-color);
+  }
+}
+
+.hl-table-body {
+  .hl-table-tr:hover {
+    background-color: #ebeef5;
+  }
+
+  .hl-table-tr.active {
+    background-color: #ebeef5;
+  }
+}
+
+.hl-table-td-div {
+  display: flex;
+  align-items: center;
+}

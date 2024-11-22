@@ -1,0 +1,10 @@
+.hl-preview-img {
+  height: var(--hl-image-height);
+  width: var(--hl-image-width);
+  position: relative;
+
+  .van-image {
+    width: 100%;
+    height: 100%;
+  }
+}

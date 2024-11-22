@@ -1,0 +1,14 @@
+.hl-date {
+  .icon {
+    transition: all 0.5s;
+  }
+
+  .active {
+    transform: rotate(-180deg);
+  }
+
+  .van-cell {
+    padding: 0;
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,10 @@
+.hl-main-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .main-body-wrapper {
+    flex: 1;
+    min-height: 0;
+  }
+}
