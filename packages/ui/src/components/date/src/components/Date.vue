@@ -1,4 +1,5 @@
 <script setup>
+import dayjs from 'dayjs'
 import { DatePicker } from 'vant'
 import { computed } from 'vue'
 import { getDateFormat } from '../hooks'

@@ -1,8 +1,7 @@
 {
-  "name": "@hl/ui",
+  "name": "@hl/h5",
   "type": "module",
-  "version": "0.7.2",
-  "main": "./index.js",
+  "version": "0.0,0",
   "scripts": {
     "commit": "git add . && git cz",
     "lint": "lint-staged",
@@ -10,6 +9,7 @@
     "update-dep": "npm-check-updates & ncu -u & pnpm i"
   },
   "dependencies": {
+    "@hl/theme-chalk": "workspace:*",
     "@hl/utils": "0.7.3",
     "@iconify/vue": "^4.1.2",
     "@multiavatar/multiavatar": "^1.0.7",

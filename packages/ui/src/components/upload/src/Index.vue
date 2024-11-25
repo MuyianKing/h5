@@ -1,7 +1,7 @@
 <script setup>
-import { AUDIO_SUFFIX, FILE_SUFFIX } from '@hl/utils'
+import { AUDIO_SUFFIX, FILE_SUFFIX, guid } from '@hl/utils'
 import { computed, inject, nextTick, onMounted, provide, ref, useSlots, watch } from 'vue'
-
+import { closeLoading, error, loading } from '../../../utils/message'
 import PreviewComp from './components/Preview.vue'
 import UploadProgress from './components/Progress.vue'
 import TriggerComp from './components/Trigger.vue'
@@ -55,7 +55,7 @@ const props = defineProps({
 
 const emits = defineEmits(['upload-start', 'upload-finish'])
 
-const { uploadFile } = inject('GLOBAL_CUSTOM_CONFIG', null)
+const { uploadFile } = inject('GLOBAL_CUSTOM_CONFIG', { uploadFile: null })
 
 const slots = useSlots()
 
@@ -87,7 +87,7 @@ function handleReupload(row) {
 // 选择文件后
 async function handleSelect(file) {
   let new_file = {
-    id: hl.common.guid(),
+    id: guid(),
     name: file.name,
     path: URL.createObjectURL(file),
   }
@@ -134,7 +134,7 @@ async function handleSelect(file) {
       loading: true,
     })
 
-    hl.message.loading('正在上传...')
+    loading('正在上传...')
 
     try {
       const result = await handleUploadFile(file)
@@ -144,9 +144,9 @@ async function handleSelect(file) {
         loading: false,
       })
       emits('upload-finish')
-      hl.message.closeLoading()
+      closeLoading()
     } catch (e) {
-      hl.message.error(e, '上传失败')
+      error(e, '上传失败')
     }
   } else {
     setModelValue(new_file, {

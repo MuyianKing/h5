@@ -1,6 +1,7 @@
 <script setup>
 import { Icon as VanIcon, Progress as VanProgress } from 'vant'
 import { computed, inject, reactive, ref, watch } from 'vue'
+import { error } from '../../../utils/message'
 
 const props = defineProps({
   file: {
@@ -9,7 +10,7 @@ const props = defineProps({
   },
 })
 
-const { previewFileUrl } = inject('GLOBAL_CUSTOM_CONFIG', null)
+const { previewFileUrl } = inject('GLOBAL_CUSTOM_CONFIG', { previewFileUrl: null })
 
 let audio = null
 const player = reactive({
@@ -30,7 +31,7 @@ function handleClick() {
   player.show_progress = true
 
   if (player.error) {
-    hl.message.error(null, player.error)
+    error(null, player.error)
     return
   }
 
@@ -74,7 +75,7 @@ watch(() => props.file, (val) => {
     player.error = '音频数据不存在，无法播放'
   }
 
-  audio.src = previewFileUrl(val.path, val.prefix)
+  audio.src = previewFileUrl ? previewFileUrl(val.path, val.prefix) : val.path
 }, {
   immediate: true,
 })

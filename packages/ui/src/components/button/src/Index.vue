@@ -14,7 +14,7 @@ defineProps({
 </script>
 
 <template>
-  <van-button :type :loading-text>
+  <van-button class="hl-button" :type :loading-text>
     <slot />
   </van-button>
 </template>

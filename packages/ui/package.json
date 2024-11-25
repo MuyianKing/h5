@@ -1,15 +1,7 @@
 {
-  "name": "@hl/h5",
-  "type": "module",
-  "version": "0.0.1",
-  "main": "./index.js",
-  "scripts": {
-    "build": "vite build"
-  },
-  "dependencies": {
-    "@hl/theme-chalk": "workspace:*"
-  },
-  "devDependencies": {
-
-  }
+	"name": "@hl/h5",
+	"type": "module",
+	"version": "0.0.4",
+	"main": "./index.js",
+	"devDependencies": {}
 }

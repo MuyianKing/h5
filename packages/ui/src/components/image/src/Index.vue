@@ -35,7 +35,7 @@ const props = defineProps({
   },
 })
 
-const { previewFileUrl } = inject('GLOBAL_CUSTOM_CONFIG', null)
+const { previewFileUrl } = inject('GLOBAL_CUSTOM_CONFIG', { previewFileUrl: null })
 
 // 查看地址
 const prev_src = computed(() => {

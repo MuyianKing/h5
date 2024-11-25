@@ -12,10 +12,13 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  name: {
+    type: String,
+    default: '',
+  },
 })
 
-const user = useUserStore()
-const svgCode = multiavatar(user.name || '用户')
+const svgCode = multiavatar(props.name || '用户')
 
 const error = ref(false)
 function handleError() {

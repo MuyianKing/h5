@@ -1,4 +1,4 @@
-import { download } from '@hl/utils'
+import { download, isTruth } from '@hl/utils'
 import { BASE_URL } from './app'
 
 /**
@@ -8,7 +8,7 @@ import { BASE_URL } from './app'
  * @returns {string} url
  */
 export function previewFileUrl(path, prefix = '') {
-  if (!hl.common.isTruth(path)) {
+  if (!isTruth(path)) {
     return ''
   }
 

@@ -158,6 +158,13 @@ export default [
     },
   },
   {
+    path: '/message',
+    component: () => import('@views/components/Message.vue'),
+    meta: {
+      title: '消息提示',
+    },
+  },
+  {
     path: '/:pathMatch(.*)*',
     component: () => import('@views/404.vue'),
   },

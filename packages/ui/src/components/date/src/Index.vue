@@ -1,5 +1,6 @@
 <script setup>
 import { useCustomFieldValue } from '@vant/use'
+import dayjs from 'dayjs'
 import { PickerGroup, Field as VanField, Icon as VanIcon, Popup as VanPopup } from 'vant'
 import { nextTick, ref } from 'vue'
 import DateComp from './components/Date.vue'

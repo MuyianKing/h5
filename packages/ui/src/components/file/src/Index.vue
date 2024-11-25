@@ -17,7 +17,7 @@ const props = defineProps({
   },
 })
 
-const { downloadFile } = inject('GLOBAL_CUSTOM_CONFIG', null)
+const { downloadFile } = inject('GLOBAL_CUSTOM_CONFIG', { downloadFile: null })
 
 const wavesurfer_src = ref('')
 function handleDownload() {

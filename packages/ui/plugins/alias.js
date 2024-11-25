@@ -3,7 +3,7 @@ export function HlUIAlias() {
     name: 'my-plugin',
     enforce: 'pre',
     transform(code, id) {
-      if (!id.endsWith('style/index.js')) {
+      if (!id.endsWith('src/style.js')) {
         return
       }
 

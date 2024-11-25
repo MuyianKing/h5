@@ -21,7 +21,7 @@ async function submit() {
     userStore.initUser(res.data)
     afterLogin()
   } catch (error) {
-    hl.message.error(error, '')
+    error(error, '')
   }
 }
 

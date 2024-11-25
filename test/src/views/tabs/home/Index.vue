@@ -104,6 +104,15 @@ const components = [
       },
     ],
   },
+  {
+    title: '方法',
+    children: [
+      {
+        label: 'message 消息提示',
+        path: '/message',
+      },
+    ],
+  },
 ]
 
 const router = useRouter()

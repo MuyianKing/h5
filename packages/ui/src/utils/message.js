@@ -28,7 +28,6 @@ export function closeLoading() {
  */
 export function error(e, msg) {
   const error_message = e ? (e.error || e.message || '') : ''
-
   console.log(e)
 
   showFailToast({
@@ -50,7 +49,7 @@ export function success(msg, params = {}) {
     duration,
     onClose: () => {
       if (params.back) {
-        hl.jumper.back()
+        window.history.go(-1)
       }
     },
     ...params,
@@ -101,8 +100,7 @@ export async function confirm(msg, params = {}) {
       ...params,
     })
     return true
-  } catch (e) {
-    console.log(e)
+  } catch {
     return false
   }
 }

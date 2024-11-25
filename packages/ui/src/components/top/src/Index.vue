@@ -18,7 +18,7 @@ const props = defineProps({
   },
 })
 
-const { backFun } = inject('GLOBAL_CUSTOM_CONFIG', null)
+const { backFun } = inject('GLOBAL_CUSTOM_CONFIG', { backFun: null })
 
 function handleBack() {
   if (props.noBack) {

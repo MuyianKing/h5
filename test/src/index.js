@@ -2,7 +2,6 @@ import api from '@/api'
 import App from '@/App.vue'
 import pinia from '@/pinia'
 import router from '@/router'
-import * as message from '@hl/h5/src/utils/message'
 import * as common from '@hl/utils/es/common'
 import * as file from '@hl/utils/es/file'
 import storage from '@hl/utils/es/storage'
@@ -26,7 +25,6 @@ window.hl = {
   file,
   common,
   api,
-  message,
 }
 
 function initApp() {

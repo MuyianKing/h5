@@ -27,7 +27,7 @@ const props = defineProps({
   },
 })
 
-const { previewFileUrl } = inject('GLOBAL_CUSTOM_CONFIG', null)
+const { previewFileUrl } = inject('GLOBAL_CUSTOM_CONFIG', { previewFileUrl: null })
 
 const video_ref = ref()
 function handleClick() {
